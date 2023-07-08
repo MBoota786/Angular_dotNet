@@ -27,16 +27,14 @@ namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //________ Adding DbContext and  Sqlite Connection __________
             services.AddDbContext<DataContext>(x=>{
                 x.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
-            services.AddControllers(); 
-            services.AddSwaggerGen(c=>{
-                c.SwaggerDoc("v1",new OpenApiInfo(){
-                    Title = "WebAPIv5",
-                    Version= "V1"
-                });
-            });
+            services.AddControllers();
+
+            //______ Add Cores ________
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,13 +43,18 @@ namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(x=>x.SwaggerEndpoint("/swagger/v1/swagger.json","ok"));
+                // app.UseSwagger();
+                // app.UseSwaggerUI(x=>x.SwaggerEndpoint("/swagger/v1/swagger.json","ok"));
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //_______ Cors __________
+            app.UseCors(x=>{
+                x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+            });
 
             app.UseAuthorization();
 
