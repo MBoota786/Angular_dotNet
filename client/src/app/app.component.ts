@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 
 //____________________________ Fetch Users ___________________________________
 export class AppComponent implements OnInit{
-  title = 'client';
+  title = 'Client APP';
   Users:any;
 
   constructor(private http: HttpClient){}
