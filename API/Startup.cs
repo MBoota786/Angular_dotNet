@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.OpenApi.Models;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
+using API.Services;
 
 namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
 {
@@ -27,6 +29,9 @@ namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //________ Adding  token Services ____________
+            services.AddScoped<ITokenService, TokenService>();
+
             //________ Adding DbContext and  Sqlite Connection __________
             services.AddDbContext<DataContext>(x=>{
                 x.UseSqlite(_config.GetConnectionString("DefaultConnection"));
