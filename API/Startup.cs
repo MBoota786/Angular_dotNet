@@ -13,6 +13,9 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
 using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
 {
@@ -40,6 +43,17 @@ namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
 
             //______ Add Cores ________
             services.AddCors();
+            
+            //________ JWT bearer ___________
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(option=>{
+                    option.TokenValidationParameters = new TokenValidationParameters{
+                      ValidateIssuerSigningKey = true,
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
+                      ValidateIssuer = false,
+                      ValidateAudience = false
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +75,7 @@ namespace _2_Model_a_ViewData_ViewBag_TempData_Seasion
                 x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
             });
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
