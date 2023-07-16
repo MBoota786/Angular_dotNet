@@ -67,3 +67,8 @@ E:\DatingApp\api\bin\Debug\net7.0\Humanizer.dll
 E:\DatingApp\api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 E:\DatingApp\api\bin\Debug\net7.0\Mono.TextTemplating.dll
 E:\DatingApp\api\bin\Debug\net7.0\System.CodeDom.dll
+E:\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+E:\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+E:\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+E:\DatingApp\api\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,14 +19,17 @@ namespace API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly ITokenService _tokenServices;
 
-        public AccountController( DataContext context)
+        public AccountController( DataContext context,
+                    ITokenService tokenServices)
         {
             _context = context;
+            _tokenServices = tokenServices;
         }
         
         [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Registration(RegisterDTO dto)//(string userName , string password)
+        public async Task<ActionResult<UserDTO>> Registration(RegisterDTO dto)//(string userName , string password)
         {
             if(await UserExists(dto.userName)) return BadRequest("user Taken");
             
@@ -38,7 +43,11 @@ namespace API.Controllers
             };
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            return user;
+
+            return new UserDTO{
+                UserName = user.UserName,
+                Token = _tokenServices.CreateToken(user)
+            };
         }
         public async Task<bool> UserExists(string userName)
         {
@@ -46,7 +55,7 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AppUser>> Login(LoginDTO dto)//(string userName , string password)
+        public async Task<ActionResult<UserDTO>> Login(LoginDTO dto)//(string userName , string password)
         {
             var user =await _context.Users.FirstOrDefaultAsync(x=>x.UserName == dto.userName);
             if(user == null) return Unauthorized("Invlaid User");
@@ -57,7 +66,10 @@ namespace API.Controllers
             {
                 if(ComputeHash[i] != user.PasswordHas[i]) return Unauthorized("Invalid Password");
             }
-            return user;
+            return new UserDTO{
+                UserName = user.UserName,
+                Token = _tokenServices.CreateToken(user)
+            };
         }        
     }
 }
