@@ -11,6 +11,8 @@ import { NavComponent } from './nav/nav.component';
 //___________ Forms Modules _________________
 import { FormsModule } from '@angular/forms';
 
+//___________ BS NgDropdown _________________
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

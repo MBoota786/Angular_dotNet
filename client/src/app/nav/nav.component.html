@@ -17,21 +17,28 @@
           <a class="nav-link" aria-current="page" href="#">Messages</a>
         </li>
       </ul>
-      <ul  class="navbar-nav ms-auto mb-2 mb-lg-0" >
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <!-- ________ Profile ________ -->
+        <!-- ___________ Profile _____________ -->
         <li class="nav-item dropdown" *ngIf="loggedIn">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome User
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li *ngIf="loggedIn"><a class="dropdown-item" href="#">LogOut</a></li>
-          </ul>
+          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <button type="button" class="nav-link" id="dropdownManual" ngbDropdownAnchor
+              (focus)="myDrop.open()">
+              Welcome User <b>{{model.username}}</b>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem>Profile</button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem (click)="logout()">logOut</button>
+            </div>
+          </div>
         </li>
 
+      
+
         <!-- ________ LogIn Form ________ -->
-        <form *ngIf="!loggedIn" #loginForm="ngForm" class="d-flex" role="search" (ngSubmit)="login()" autocomplete="off">
+        <form *ngIf="!loggedIn" #loginForm="ngForm" class="d-flex" role="search" (ngSubmit)="login()"
+          autocomplete="off">
           <input class="form-control me-2" type="text" placeholder="User" name="username"
             [(ngModel)]="model.username" />
           <input class="form-control me-2" type="password" placeholder="Password" name="password"
@@ -42,7 +49,7 @@
         <!-- ________ LogOut ________ -->
         <!-- in NG we  need to  add some  ng functionality to show hide dropdown -->
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#" *ngIf="loggedIn" (click)="logout()">LogOut</a>
+          <!-- <a class="nav-link" aria-current="page" href="#" *ngIf="loggedIn" (click)="logout()">LogOut</a> -->
         </li>
       </ul>
 
