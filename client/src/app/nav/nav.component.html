@@ -17,9 +17,14 @@
           </li>
         </ul>
 
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="text" placeholder="User">
-          <input class="form-control me-2" type="password" placeholder="Password">
+        <form #loginForm="ngForm" class="d-flex" role="search" (ngSubmit)="login()" 
+          autocomplete="off">
+          <input class="form-control me-2" type="text" placeholder="User"
+            name="username"
+            [(ngModel)]="model.username"/>
+          <input class="form-control me-2" type="password" placeholder="Password"
+            name="password"
+            [(ngModel)]="model.password"/>
           <button class="btn btn-outline-success" type="submit">Login</button>
         </form>
       </div>
