@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 //___________ Fetching Data from API by  HttpClient _________________
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavComponent } from './nav/nav.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent 
   ],
   imports: [
     BrowserModule,
