@@ -20,6 +20,7 @@ export class AccountService {
 
   constructor(private http:HttpClient) { }
 
+  //__________ Login __________
   login(model:any){
     return this.http.post(this.baseUrl + 'account/login' , model);
   }
