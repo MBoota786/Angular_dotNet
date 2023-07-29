@@ -17,7 +17,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent ,
+    NavComponent,
   ],
   
   imports: [
