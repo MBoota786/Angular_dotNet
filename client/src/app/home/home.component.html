@@ -1,0 +1,32 @@
+<div class="container">
+    <div *ngIf="!registerMode" class="row pb-5 d-flex justify-content-center align-content-center align-items-center text-center" style="height:100vh" >
+        <h1>Find Your Match</h1>
+        <p>All you need to Signup here</p>
+        <div class="row ">
+            <div class="col-12">
+                <button class="btn btn-primary" (click)="registerToggle()">For Registration</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div *ngIf="registerMode" class="row pb-5 d-flex justify-content-center align-content-center align-items-center text-center" style="height:100vh" >
+        <h1>Registration Form</h1>
+        
+            <div class="col-6">
+                <br><br>
+                <label class="mb-3">UserName</label>
+                <input type="text" class="form-control text-center border-dark"  placeholder="Enter User Name">
+
+                <br><br>
+                <label class="mb-3">Password</label>
+                <input type="password" class="form-control text-center border-dark" placeholder="Enter Password">
+
+                <br><br>
+                <input type="button" class="btn btn-primary" value="Register"/>
+                
+            </div>
+        
+    </div>
+
+</div>
