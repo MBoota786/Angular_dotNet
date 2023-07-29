@@ -14,12 +14,14 @@ import { FormsModule } from '@angular/forms';
 //___________ BS NgDropdown _________________
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   
   imports: [

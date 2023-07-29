@@ -1,5 +1,7 @@
 <div class="container">
-    <div *ngIf="!registerMode" class="row pb-5 d-flex justify-content-center align-content-center align-items-center text-center" style="height:100vh" >
+    <div *ngIf="!registerMode"
+        class="row pb-5 d-flex justify-content-center align-content-center align-items-center text-center"
+        style="height:100vh">
         <h1>Find Your Match</h1>
         <p>All you need to Signup here</p>
         <div class="row ">
@@ -8,25 +10,28 @@
             </div>
         </div>
     </div>
-    
-    
-    <div *ngIf="registerMode" class="row pb-5 d-flex justify-content-center align-content-center align-items-center text-center" style="height:100vh" >
-        <h1>Registration Form</h1>
-        
+
+
+    <div *ngIf="registerMode">
+        <div class="row pb-5 pt-5 d-flex justify-content-center ">
             <div class="col-6">
+                <app-register></app-register>
+            </div>
+        </div>
+
+        <!-- <form action="" autocomplete="off">
                 <br><br>
                 <label class="mb-3">UserName</label>
-                <input type="text" class="form-control text-center border-dark"  placeholder="Enter User Name">
+                <input type="text" class="form-control text-center border-dark" placeholder="Enter User Name">
 
                 <br><br>
                 <label class="mb-3">Password</label>
                 <input type="password" class="form-control text-center border-dark" placeholder="Enter Password">
 
                 <br><br>
-                <input type="button" class="btn btn-primary" value="Register"/>
-                
-            </div>
-        
+                <input type="button" class="btn btn-primary" value="Register" />
+            </form> -->
+
     </div>
 
 </div>
