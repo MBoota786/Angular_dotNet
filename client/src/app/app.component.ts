@@ -12,7 +12,7 @@ import { AccountService } from './_services/account.service';
 //____________________________ Fetch Users ___________________________________
 export class AppComponent implements OnInit{
   title = 'Client APP';
-  Users:any;
+  // Users:any;
 
   constructor(private http: HttpClient, private accountService: AccountService){}
 
@@ -22,21 +22,25 @@ export class AppComponent implements OnInit{
     // },error=>{
     //   console.log(error);
     // })
-    this.getUsers();
+
+    // this.getUsers();
+    
     this.setCurrentUser();
   }
 
-  getUsers(){
-    this.http.get("http://localhost:5000/api/Users").subscribe(response=>{
-      console.log(response);
-      this.Users = response;
-    },error=>{
-      console.log(error);
-    })
-  }
+  //___________________ Geting All Users ______________________
+  // getUsers(){
+  //   this.http.get("http://localhost:5000/api/Users").subscribe(response=>{
+  //     console.log(response);
+  //     this.Users = response;
+  //   },error=>{
+  //     console.log(error);
+  //   })
+  // }
 
 
-  //___ check if  user is alredy exist in Local storage _____
+  //__________________ checking User in Local Storage _______________
+  // check if  user is alredy exist in Local storage _____
   setCurrentUser() {
     const userStringy = localStorage.getItem('user');
     if (userStringy !== null) {

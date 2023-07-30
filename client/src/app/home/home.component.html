@@ -15,7 +15,7 @@
     <div *ngIf="registerMode">
         <div class="row pb-5 pt-5 d-flex justify-content-center ">
             <div class="col-6">
-                <app-register></app-register>
+                <app-register [users] = "Users" (toggleRegisterMode)="registerToggle()"></app-register>
             </div>
         </div>
 
