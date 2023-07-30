@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  Users:any;
+  Users:any; //sending this to child component child
 
   constructor(private http:HttpClient){}
   
@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
 
   //_________ Get Users List and show in Child Components ____________________
   getUsers(){
-    this.http.get("http://localhost:5000/api/Users").subscribe(response=>{
-      console.log(response);
-      this.Users = response;
-    },error=>{
-      console.log(error);
-    })
+    this.http.get("http://localhost:5000/api/Users").subscribe(users=>this.Users = users);
+  }
+
+  //__________ Cancel Register  Values coming from  Child Comp ___________
+  cancelRegisterMode(event:boolean){
+    this.registerMode = event;
   }
 } 

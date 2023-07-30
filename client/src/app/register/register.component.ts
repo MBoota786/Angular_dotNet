@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class RegisterComponent implements OnInit{
   model:any ={};
-  @Input() users : any = {};
-  @Output() toggleRegisterMode= new EventEmitter<boolean>();
+  @Input() usersFromHomeComponents : any = {};  //coming from 
+  @Output() cancelRegister= new EventEmitter<boolean>();
 
   constructor(){}
 
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit{
   //______________ Cancel _________________
   cancel(){
     // console.log('canceled');
-    this.toggleRegisterMode.emit(false);
+    this.cancelRegister.emit(false);
   }
 
 }
